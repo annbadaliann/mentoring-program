@@ -107,7 +107,8 @@ function Register() {
           Sign up
         </Typography>
         <FormProvider {...methods}>
-          <form>
+            
+          <form style={{width: "100%"}}>
             <div>{getStepContent(activeStep)}</div>
             <Box display="flex" justifyContent="center" mt={5}>
               <Button disabled={activeStep === 1} onClick={handleBack}>

@@ -1,3 +1,3 @@
 export enum EBaseUrl {
-    envLetter = 'https://namak.haypost.am/API',
+    mainUrl = 'http://localhost:3000/',
   }

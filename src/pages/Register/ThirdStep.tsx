@@ -3,10 +3,9 @@ import { TextFieldCustom } from "./Input";
 
 const ThirdStep = () => {
   return (
-    <div>
-      <TextFieldCustom label="First name" name="a" />
-      <TextFieldCustom label="Last name" name="b" />
-      <TextFieldCustom label="email" name="c" />
+    <div style={{width: '100%'}}>
+      <p>third step, find your mentor</p>
+      <TextFieldCustom label="Choose your mentor" name="a" />
     </div>
   );
 };
