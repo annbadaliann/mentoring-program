@@ -1,19 +1,32 @@
-import { useHistory } from "react-router-dom";
+import { useState, useEffect } from "react";
 
-import { useState, useEffect, useCallback } from "react";
+import { useHistory } from "react-router-dom";
 
 import Box from "@mui/material/Box";
 
 import Button from "@mui/material/Button";
 
 import columns from "./constants";
-import MqTable from "../../shared/components/Table";
-import { useDispatch } from "react-redux";
-import { getMentors } from "../../store/slicers/mentors";
+import McTable from "../../shared/components/Table";
 
+import mentorsData from "../../mentors.json";
+import LoadingWrapper from "../../shared/containers/LoadingWrapper";
+
+interface IMentor {
+  first_name: string;
+  last_name: string;
+  email: string;
+  gender: string;
+  ["job title"]: string;
+  department: string;
+  country: string;
+  city: string;
+}
 const Home = (): JSX.Element => {
+  const [mentors, setMentors] = useState<IMentor[]>([]);
   const history = useHistory();
-  const [mentors, setMentors] = useState([]);
+
+  console.log(mentorsData, "mentors");
 
   const goBack = () => {
     history.push({
@@ -22,20 +35,18 @@ const Home = (): JSX.Element => {
     });
   };
 
+  const getMentors = async () => {
+    const result = (await new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(mentorsData);
+      }, 2000);
+    })) as IMentor[];
+
+    setMentors(result);
+  };
+
   useEffect(() => {
-    const rows = [
-      {
-        name: "anna",
-        lastName: "badalian",
-      },
-
-      {
-        name: "erna",
-        lastName: "badalian",
-      },
-    ];
-
-    setMentors(rows);
+    getMentors();
   }, []);
 
   return (
@@ -46,7 +57,9 @@ const Home = (): JSX.Element => {
         </Button>
       </Box>
 
-      <MqTable rows={mentors} columns={columns} />
+      <LoadingWrapper isLoading={!mentors.length}>
+        <McTable rows={mentors} columns={columns} />
+      </LoadingWrapper>
     </div>
   );
 };

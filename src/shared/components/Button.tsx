@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import { ReactNode, useMemo } from "react";
 import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles(() => ({
@@ -49,13 +49,20 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const HpButton = ({
+interface IMcButton {
+  children: ReactNode,
+  type: string,
+  width: string,
+  className: any
+}
+
+const McButton = ({
   children,
   type = "contained",
   width = "257px",
-  className = "",
+  className,
   ...rest
-}) => {
+}: IMcButton) => {
   const classes = useStyles();
 
   const computedStyles = useMemo(() => {
@@ -77,4 +84,4 @@ const HpButton = ({
   );
 };
 
-export default HpButton;
+export default McButton;

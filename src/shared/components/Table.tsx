@@ -6,13 +6,22 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
 
-const MqTable = ({rows, columns}) => {
+interface IColumn {
+  title: string;
+  field: string;
+}
+interface IMcTableProps {
+  rows: any[];
+  columns: IColumn[];
+}
+
+const McTable = ({ rows, columns }: IMcTableProps) => {
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            {columns.map((item) => (
+            {columns.map((item: IColumn) => (
               <TableCell>{item.title}</TableCell>
             ))}
           </TableRow>
@@ -20,7 +29,7 @@ const MqTable = ({rows, columns}) => {
         <TableBody>
           {rows.map((row) => (
             <TableRow key={row.name}>
-              {columns.map((col) => (
+              {columns.map((col: IColumn) => (
                 <TableCell component="th" scope="row">
                   {row[col.field]}
                 </TableCell>
@@ -33,4 +42,4 @@ const MqTable = ({rows, columns}) => {
   );
 };
 
-export default MqTable;
+export default McTable;

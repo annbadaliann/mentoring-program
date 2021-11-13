@@ -3,7 +3,8 @@ import { makeStyles } from "@mui/styles";
 const useStyles = makeStyles(() => ({
   mainLayoutContainer: {
     backgroundColor: "#f8f8f8",
-    display:'block'
+    display:'block',
+    minHeight: "100vh"
   },
   card: {
     paddingBottom: "200px",

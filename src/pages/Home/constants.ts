@@ -1,25 +1,36 @@
 const columns = [
   {
     title: "First name",
-    field: "name",
+    field: "first_name",
   },
   {
     title: "Last name",
-    field: "lastName",
+    field: "last_name",
+  },
+  {
+    title: "Email",
+    field: "email",
+  },
+  {
+    title: "Gender",
+    field: "gender",
+  },
+  {
+    title: "Job title",
+    field: "job title",
+  },
+  {
+    title: "Department",
+    field: "department",
+  },
+  {
+    title: "Country",
+    field: "country",
+  },
+  {
+    title: "City",
+    field: "city",
   },
 ];
 
-
-const rows = [
-    {
-      name: "anna",
-      lastName: "badalian",
-    },
-
-    {
-      name: "erna",
-      lastName: "badalian",
-    },
-  ];
-  
 export default columns;
