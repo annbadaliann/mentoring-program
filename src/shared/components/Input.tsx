@@ -16,11 +16,10 @@ const McInput = ({ ...props }) => {
     <React.Fragment>
       <TextField
         fullWidth
-        {...register(props.name, { required: true })}
+        {...register(props.name)}
         margin="dense"
         {...props}
       />
-      <p>Required</p>
     </React.Fragment>
   );
 };

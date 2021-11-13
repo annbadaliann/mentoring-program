@@ -1,21 +1,23 @@
 import { useState, useEffect, useMemo } from "react";
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
+import { FormProvider, useForm } from "react-hook-form";
 
 import { useHistory, useLocation } from "react-router-dom";
 
+import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 
-import { FormProvider, useForm } from "react-hook-form";
+import McButton from "../../shared/components/Button";
+
 import FirstStep from "./components/FirstStep";
 import SecondStep from "./components/SecondStep";
 import ThirdStep from "./components/ThirdStep";
 
-import constants from "./constants";
 import { ESteps, ILocation, IRegisterForm } from "./model";
+import constants from "./constants";
+import useStyles from "./style";
 
 function getStepContent(step: number) {
   switch (step) {
@@ -36,6 +38,7 @@ function Register() {
   const location: ILocation = useLocation();
   const history = useHistory();
 
+  const classes = useStyles();
   const isLastStep = useMemo(
     () => activeStep === ESteps.ThirdStep,
     [activeStep]
@@ -79,7 +82,7 @@ function Register() {
           alignItems: "center",
         }}
       >
-        <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+        <Avatar sx={{ m: 1, bgcolor: "primary.main" }}>
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
@@ -89,20 +92,22 @@ function Register() {
           <form style={{ width: "100%" }}>
             <div>{getStepContent(activeStep)}</div>
 
-            <Box display="flex" justifyContent="center" mt={5}>
-              <Button
-                disabled={activeStep === ESteps.FirstStep}
-                onClick={handleBack}
-              >
-                Back
-              </Button>
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={isLastStep ? handleSubmit(onSubmit) : handleNext}
+            <Box display="flex" mt={5}>
+              <Box mr={2}>
+                <McButton
+                  variant="outlined"
+                  disabled={activeStep === ESteps.FirstStep}
+                  clickHandler={handleBack}
+                  width="140px"
+                >
+                  Back
+                </McButton>
+              </Box>
+              <McButton
+                clickHandler={isLastStep ? handleSubmit(onSubmit) : handleNext}
               >
                 {isLastStep ? "Submit" : "Next"}
-              </Button>
+              </McButton>
             </Box>
           </form>
         </FormProvider>

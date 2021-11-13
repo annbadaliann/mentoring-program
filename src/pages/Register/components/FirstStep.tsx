@@ -22,7 +22,7 @@ const FirstStep = () => {
           control={control}
           name="gender"
           render={({ field }) => (
-            <RadioGroup {...field}>
+            <RadioGroup {...field} row>
               <FormControlLabel
                 value="female"
                 control={<Radio />}

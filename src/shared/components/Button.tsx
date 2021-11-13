@@ -1,86 +1,54 @@
 import { ReactNode, useMemo } from "react";
 import { makeStyles } from "@mui/styles";
+import { Button, Theme } from "@mui/material";
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme: Theme) => ({
   root: {
     padding: "13px 20px",
     borderRadius: "10px",
-    color: "#fff",
     height: "54px",
     cursor: "pointer",
     width: "100%",
-    minWidth: "257px",
-  },
-  contained: {
-    backgroundColor: "#EE2D48",
-    border: "unset",
-
-    "&:hover": {
-      backgroundColor: "#FF5970",
-    },
-
-    "&:focus": {
-      backgroundColor: "#BF243A",
-    },
-
-    "&[disabled]": {
-      backgroundColor: "rgb(238 45 72 / 50%)",
-    },
-  },
-  outlined: {
-    backgroundColor: "#fff",
-    border: "1px solid #EE2D48",
-    color: "#EE2D48",
-
-    "&:hover": {
-      backgroundColor: "#FF5970",
-      color: "#fff",
-    },
-
-    "&:focus": {
-      backgroundColor: "#BF243A",
-      color: "#fff",
-    },
-
-    "&[disabled]": {
-      borderColor: "rgb(238 45 72 / 50%)",
-      color: "rgb(238 45 72 / 50%)",
-    },
   },
 }));
 
 interface IMcButton {
-  children: ReactNode,
-  type: string,
-  width: string,
-  className: any
+  children: ReactNode;
+  width?: string;
+  className?: any;
+  disabled: boolean;
+  clickHandler: () => void;
+  variant: string;
 }
 
 const McButton = ({
   children,
-  type = "contained",
   width = "257px",
   className,
+  disabled,
+  clickHandler,
+  variant = "contained",
   ...rest
 }: IMcButton) => {
   const classes = useStyles();
 
   const computedStyles = useMemo(() => {
     return {
-      maxWidth: width,
+      width,
     };
   }, [width]);
 
   return (
-    <button
-      className={`${classes.root} ${className} ${
-        type === "contained" ? classes.contained : classes.outlined
-      }`}
+    <Button
+      variant={variant}
+      className={`${classes.root} ${className}`}
+      color="primary"
+      onClick={clickHandler}
       {...rest}
       style={computedStyles}
     >
       {children}
-    </button>
+    </Button>
   );
 };
 

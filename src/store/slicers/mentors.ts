@@ -21,7 +21,6 @@ const mentorSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(getMentors.fulfilled, (state, { payload }) => {
-      debugger;
       state.mentors = payload;
     });
   },

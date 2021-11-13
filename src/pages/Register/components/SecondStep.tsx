@@ -1,12 +1,19 @@
 import McInput from "../../../shared/components/Input";
+import McSelect from "../../../shared/components/Select";
 
 const SecondStep = (): JSX.Element => {
+  const options = [
+    {
+      id: 1,
+      value: "aa",
+    },
+  ];
   return (
     <div>
-      <McInput label="Department" name="department" />
-      <McInput label="Job title" name="jobTitle" />
-      <McInput label="Country" name="country" />
-      <McInput label="City" name="city" />
+      <McSelect options={options} label="Department" name="department" />
+      <McSelect options={options} label="Job title" name="jobTitle" />
+      <McSelect options={options} label="Country" name="country" />
+      <McSelect options={options} label="City" name="city" />
     </div>
   );
 };
