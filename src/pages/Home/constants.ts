@@ -17,7 +17,7 @@ const columns = [
   },
   {
     title: "Job title",
-    field: "job title",
+    field: "job_title",
   },
   {
     title: "Department",

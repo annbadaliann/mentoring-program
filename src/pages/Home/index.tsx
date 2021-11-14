@@ -17,11 +17,15 @@ interface IMentor {
   last_name: string;
   email: string;
   gender: string;
-  ["job title"]: string;
+  job_title: string;
   department: string;
   country: string;
   city: string;
+  id: number,
 }
+
+const API_URL = "http://localhost:8000/";
+
 const Home = (): JSX.Element => {
   const [mentors, setMentors] = useState<IMentor[]>([]);
   const history = useHistory();
@@ -31,23 +35,30 @@ const Home = (): JSX.Element => {
   const goBack = () => {
     history.push({
       pathname: "/register",
-      state: { page: 3 },
+      state: { page: 2 },
     });
   };
 
-  const getMentors = async () => {
-    const result = (await new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve(mentorsData);
-      }, 2000);
-    })) as IMentor[];
 
-    setMentors(result);
+  const getMentors = async () => {
+    const reqOpts = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    const url = `${API_URL}employees`;
+
+    const res = await fetch(url, reqOpts).then((res) => res.json())
+
+    setMentors(res);
   };
 
   useEffect(() => {
     getMentors();
   }, []);
+
 
   return (
     <div>

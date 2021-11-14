@@ -32,6 +32,8 @@ function getStepContent(step: number) {
   }
 }
 
+const API_URL = "http://localhost:8000/";
+
 function Register() {
   const [activeStep, setActiveStep] = useState(ESteps.FirstStep);
 
@@ -40,7 +42,7 @@ function Register() {
 
   const classes = useStyles();
   const isLastStep = useMemo(
-    () => activeStep === ESteps.ThirdStep,
+    () => activeStep === ESteps.SecondStep,
     [activeStep]
   );
 
@@ -57,9 +59,26 @@ function Register() {
     }
   }, [location?.state?.page]);
 
-  const onSubmit = (data: IRegisterForm) => {
-    console.log(JSON.stringify(data));
-    history.push("/");
+  const register = (user: any) => {
+    const reqOpts = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user),
+    };
+    const url = `${API_URL}users`;
+
+    localStorage.setItem("user", JSON.stringify(user));
+    return fetch(url, reqOpts).then((res) => res.json());
+  };
+
+  const onSubmit = async (data: IRegisterForm) => {
+    const res = await register(data);
+    if (res) {
+      setActiveStep(2);
+    }
+    // history.push("/");
   };
 
   const handleNext = async () => {
@@ -72,10 +91,27 @@ function Register() {
     setActiveStep((prevActiveStep) => prevActiveStep - constants.step);
   };
 
+  const handleGoDashboard = () => {
+    history.push('/')
+  }
+
+  const getClickHandlerByStep = (step) => {
+    switch (step) {
+      case ESteps.FirstStep:
+        return handleNext;
+      case ESteps.SecondStep:
+        return handleSubmit(onSubmit);
+        case ESteps.ThirdStep:
+       return handleGoDashboard
+    }
+  };
+
+  console.log(activeStep)
+
   return (
     <Container component="main" maxWidth="xs">
       <Box
-        sx={{
+        style={{
           marginTop: 8,
           display: "flex",
           flexDirection: "column",
@@ -103,9 +139,7 @@ function Register() {
                   Back
                 </McButton>
               </Box>
-              <McButton
-                clickHandler={isLastStep ? handleSubmit(onSubmit) : handleNext}
-              >
+              <McButton clickHandler={getClickHandlerByStep(activeStep)}>
                 {isLastStep ? "Submit" : "Next"}
               </McButton>
             </Box>

@@ -8,12 +8,14 @@ interface IMcSelect {
   optionId?: string;
   optionKey?: string;
   optionText?: string;
+  disabled?: boolean
 }
 
 const McSelect = ({
   name,
   label,
   options,
+  disabled,
   optionId = "id",
   optionKey = "id",
   optionText = "value",
@@ -27,12 +29,11 @@ const McSelect = ({
         name={name}
         control={control}
         render={({ field }) => (
-          <Select label={label} fullWidth {...field}>
-            {console.log(options)}
+          <Select label={label} fullWidth disabled={disabled} {...field}>
             {Array.isArray(options) &&
               options?.map((option) => (
-                <MenuItem key={option[optionId]} value={option[optionKey]}>
-                  {option[optionText]}
+                <MenuItem key={option[optionId] || option} value={option[optionKey] || option}>
+                  {option[optionText] || option}
                 </MenuItem>
               ))}
           </Select>

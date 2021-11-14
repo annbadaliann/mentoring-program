@@ -12,8 +12,8 @@ const FirstStep = () => {
   const { control } = useFormContext();
   return (
     <div>
-      <McInput label="First name" name="firstName" />
-      <McInput label="Last name" name="lastName" />
+      <McInput label="First name" name="first_name" />
+      <McInput label="Last name" name="last_name" />
       <McInput label="Email" name="email" />
       <FormControl component="fieldset">
         <FormLabel component="legend">Gender</FormLabel>
@@ -24,11 +24,11 @@ const FirstStep = () => {
           render={({ field }) => (
             <RadioGroup {...field} row>
               <FormControlLabel
-                value="female"
+                value="Female"
                 control={<Radio />}
                 label="Female"
               />
-              <FormControlLabel value="male" control={<Radio />} label="Male" />
+              <FormControlLabel value="Male" control={<Radio />} label="Male" />
             </RadioGroup>
           )}
         />
