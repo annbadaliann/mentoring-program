@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { EBaseUrl } from "../models/enums/env.enum";
+import { ISuggesstedMentor } from "../models/interfaces/mentor";
 import { api } from "../utils";
 
 const initialState: any = {
@@ -16,7 +17,7 @@ export const getMentors = createAsyncThunk(`${name}/getMentors`, async () => {
   });
 });
 
-export const getSuggestedMentors = createAsyncThunk(`${name}/getSuggestedMentors`, async (queryList) => {
+export const getSuggestedMentors = createAsyncThunk(`${name}/getSuggestedMentors`, async (queryList: ISuggesstedMentor) => {
   return api({
     method: "GET",
     url: `${EBaseUrl.mainUrl}/${name}?${queryList}`,

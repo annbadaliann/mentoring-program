@@ -8,11 +8,14 @@ import FormLabel from "@mui/material/FormLabel";
 
 import McInput from "../../../shared/components/Input";
 
+import useStyles from '../style'
+
 const FirstStep = () => {
   const { control } = useFormContext();
+  const classes = useStyles();
   
   return (
-    <div>
+    <div className={classes.wrapper}>
       <McInput label="First name" name="first_name" />
       <McInput label="Last name" name="last_name" />
       <McInput label="Email" name="email" />

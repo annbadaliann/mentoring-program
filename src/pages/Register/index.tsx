@@ -1,5 +1,5 @@
-import { useState, useEffect, useMemo } from "react";
-import { useDispatch } from "react-redux";
+import { useState, useEffect, useMemo, useCallback } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { FormProvider, useForm } from "react-hook-form";
 import { useHistory, useLocation } from "react-router-dom";
 
@@ -9,7 +9,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 
 import McButton from "../../shared/components/Button";
-import { register } from "../../store/slicers/auth";
+import { registerUser } from "../../store/slicers/auth";
 
 import FirstStep from "./components/FirstStep";
 import SecondStep from "./components/SecondStep";
@@ -19,7 +19,9 @@ import { ESteps, ILocation, IRegisterForm } from "./model";
 import constants from "./constants";
 import useStyles from "./style";
 
-import { AppDispatch } from '../../store'
+import { AppDispatch } from "../../store";
+import Steps from "./components/Steps";
+import { selectSuggestedMentors } from "../../store/slicers/mentors";
 
 function getStepContent(step: number) {
   switch (step) {
@@ -34,23 +36,24 @@ function getStepContent(step: number) {
   }
 }
 
-
 function Register() {
   const [activeStep, setActiveStep] = useState(ESteps.FirstStep);
+  const suggesteMentors = useSelector(selectSuggestedMentors);
 
   const location: ILocation = useLocation();
   const history = useHistory();
   const dispatch = useDispatch<AppDispatch>();
 
   const classes = useStyles();
+
   const isLastStep = useMemo(
-    () => activeStep === ESteps.SecondStep,
+    () => activeStep === ESteps.ThirdStep,
     [activeStep]
   );
 
   const methods = useForm({
     shouldUnregister: false,
-    mode: "onChange",
+    mode: "all",
   });
 
   const { handleSubmit, trigger } = methods;
@@ -61,78 +64,85 @@ function Register() {
     }
   }, [location?.state?.page]);
 
-  const onSubmit = async (data: IRegisterForm) => {
-    const  { meta }  = dispatch(register(data));
+  const onSubmit = useCallback(
+    async (data: IRegisterForm) => {
+      const res = dispatch(registerUser({ ...data, selectedMentors: [] }));
 
-    if(meta.requestStatus !== 'fulfilled'){
-      return;
-    }
+      if (res) {
+        setActiveStep(ESteps.ThirdStep);
+        // history.push('/')
+      }
+    },
+    [dispatch]
+  );
 
-    setActiveStep(2);
-  };
+  const goSecondStep = useCallback(async () => {
+    const isStepValid = await trigger();
 
-  const handleNext = async () => {
+    if (isStepValid)
+      setActiveStep((prevActiveStep) => prevActiveStep + constants.step);
+  }, [trigger]);
+
+
+  const goThirdStep = useCallback(async () => {
     const isStepValid = await trigger();
     if (isStepValid)
       setActiveStep((prevActiveStep) => prevActiveStep + constants.step);
-  };
+  }, [trigger]);
 
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - constants.step);
   };
 
-  const handleGoDashboard = () => {
-    history.push('/')
-  }
-
-  const getClickHandlerByStep = (step: number) => {
-    switch (step) {
-      case ESteps.FirstStep:
-        return handleNext;
-      case ESteps.SecondStep:
-        return handleSubmit(onSubmit);
+  const getClickHandlerByStep = useCallback(
+    (step: number) => {
+      switch (step) {
+        case ESteps.FirstStep:
+          return goSecondStep;
+        case ESteps.SecondStep:
+          return goThirdStep;
         case ESteps.ThirdStep:
-       return handleGoDashboard
-    }
-  };
+          return handleSubmit(onSubmit);
+      }
+    },
+    [goSecondStep, goThirdStep, handleSubmit, onSubmit]
+  );
 
   return (
-      <Box
-        style={{
-          marginTop: 8,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
-        <Avatar sx={{ m: 1, bgcolor: "primary.main" }}>
-          <LockOutlinedIcon />
-        </Avatar>
-        <Typography component="h1" variant="h5">
-          Sign up
-        </Typography>
-        <FormProvider {...methods}>
-          <form style={{ width: "100%" }}>
-            <div>{getStepContent(activeStep)}</div>
+    <Box
+      style={{
+        marginTop: 8,
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
+    >
+      <Steps activeStep={activeStep} />
+      <Typography component="h1" variant="h5">
+        Sign up
+      </Typography>
+      <FormProvider {...methods}>
+        <form style={{ width: "100%" }}>
+          <div>{getStepContent(activeStep)}</div>
 
-            <Box display="flex" mt={5}>
-              <Box mr={2}>
-                <McButton
-                  variant="outlined"
-                  disabled={activeStep === ESteps.FirstStep}
-                  clickHandler={handleBack}
-                  width="140px"
-                >
-                  Back
-                </McButton>
-              </Box>
-              <McButton clickHandler={getClickHandlerByStep(activeStep)}>
-                {isLastStep ? "Submit" : "Next"}
+          <Box display="flex" justifyContent="center" mt={5}>
+            <Box mr={2}>
+              <McButton
+                variant="outlined"
+                disabled={activeStep === ESteps.FirstStep}
+                clickHandler={handleBack}
+                width="140px"
+              >
+                Back
               </McButton>
             </Box>
-          </form>
-        </FormProvider>
-      </Box>
+            <McButton clickHandler={getClickHandlerByStep(activeStep)} disabled={!suggesteMentors.length && isLastStep}>
+              {isLastStep ? "Submit" : "Next"}
+            </McButton>
+          </Box>
+        </form>
+      </FormProvider>
+    </Box>
   );
 }
 

@@ -9,3 +9,10 @@ export interface IMentor {
   city: string;
   id: number;
 }
+
+export interface ISuggesstedMentor {
+  job_title: string;
+  department: string;
+  country: string;
+  city: string;
+}

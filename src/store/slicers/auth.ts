@@ -1,3 +1,4 @@
+import { IUser } from './../models/interfaces/user';
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { EBaseUrl } from "../models/enums/env.enum";
 import { api } from "../utils";
@@ -8,10 +9,11 @@ const initialState: any = {
 
 const name = "auth";
 
-export const register = createAsyncThunk(`${name}/getMentors`, async () => {
+export const registerUser = createAsyncThunk(`${name}/getMentors`, async (data: IUser) => {
   return api({
-    method: "GET",
-    url: `${EBaseUrl.mainUrl}/register`,
+    method: "POST",
+    url: `${EBaseUrl.mainUrl}/users`,
+    body: JSON.stringify(data)
   });
 });
 
@@ -20,7 +22,7 @@ const authSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(register.fulfilled, (state, { payload }) => {
+    builder.addCase(registerUser.fulfilled, (state, { payload }) => {
       state.user = payload;
     });
   },

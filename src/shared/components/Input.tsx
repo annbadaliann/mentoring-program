@@ -1,26 +1,23 @@
-import * as React from "react";
 import { useFormContext } from "react-hook-form";
-
 import TextField from "@mui/material/TextField";
+interface IInput {
+  name: string;
+  label: string;
+}
 
-const McInput = ({ ...props }) => {
-  //   const { meta } = useController(props);
+const McInput = ({ name, label, ...props }: IInput) => {
   const { control, formState } = useFormContext();
-
   const { register } = control;
-  console.log(formState, "form state");
-  // const error = get(formState.errors, props.name);
-  // const errorText = meta.invalid ? error.message : "";
 
   return (
-    <React.Fragment>
-      <TextField
-        fullWidth
-        {...register(props.name)}
-        margin="dense"
-        {...props}
-      />
-    </React.Fragment>
+    <TextField
+      fullWidth
+      label={label}
+      margin="dense"
+      error={formState?.errors?.[name]}
+      {...register(name, { required: true })}
+      {...props}
+    />
   );
 };
 

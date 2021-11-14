@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
@@ -6,7 +8,6 @@ import TableRow from "@mui/material/TableRow";
 import Checkbox from "@mui/material/Checkbox";
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
-import { useState } from "react";
 
 interface IColumn<T, K extends keyof T> {
   title: string;
@@ -21,17 +22,21 @@ const McTable = <T, K extends keyof T>({
   rows,
   columns,
 }: IMcTableProps<T & { id: number }, K>) => {
-  const [selectedList, setSelectedlist] = useState([]);
+  const [selectedRows, setSelectedRows] = useState();
+
+  const [allRowsSelected, selAllRowsSelected] = useState(false);
 
   const onSelectAllClick = (event) => {
     if (event.target.checked) {
-      setSelectedlist();
-      return;
+      setSelectedRows(rows.map((item) => item.id));
+    } else {
+      selAllRowsSelected([]);
     }
-    setSelectedlist([]);
   };
 
-  const handleSelectRow = (e) => {};
+  const handleSelectRow = (e) => {
+    console.log(e.target.value);
+  };
 
   return (
     <TableContainer component={Paper}>
@@ -39,7 +44,7 @@ const McTable = <T, K extends keyof T>({
         <TableHead>
           <TableRow>
             <TableCell padding="checkbox">
-              <Checkbox checked onChange={onSelectAllClick} />
+              <Checkbox onChange={onSelectAllClick} />
             </TableCell>
             {columns.map((item) => (
               <TableCell>{item.title}</TableCell>

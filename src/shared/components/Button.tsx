@@ -1,4 +1,4 @@
-import { ReactNode, useMemo } from "react";
+import { BaseSyntheticEvent, ReactNode, useMemo } from "react";
 import { makeStyles } from "@mui/styles";
 import { Button, Theme } from "@mui/material";
 
@@ -16,9 +16,9 @@ interface IMcButton {
   children: ReactNode;
   width?: string;
   className?: any;
-  disabled: boolean;
-  clickHandler: () => void;
+  clickHandler: (e?: BaseSyntheticEvent) => void | Promise<void> | undefined;
   variant: string;
+  disabled: boolean;
 }
 
 const McButton = ({
@@ -40,11 +40,12 @@ const McButton = ({
 
   return (
     <Button
-      variant={variant}
       className={`${classes.root} ${className}`}
       color="primary"
       onClick={clickHandler}
+      disabled={disabled}
       {...rest}
+      variant={variant}
       style={computedStyles}
     >
       {children}

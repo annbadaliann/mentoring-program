@@ -39,12 +39,12 @@ const commonSlice = createSlice({
       state.countries = payload;
     });
     builder.addCase(getDepartments.fulfilled, (state, { payload }) => {
-      state.countries = payload;
+      state.departments = payload;
     });
   },
 });
 
 export const selectCountries = (state: any) => state.common.countries;
-export const selectDepartments = (state: any) => state.common.selectDepartments;
+export const selectDepartments = (state: any) => state.common.departments;
 
 export default commonSlice.reducer;

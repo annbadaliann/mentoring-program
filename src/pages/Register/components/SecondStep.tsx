@@ -10,13 +10,18 @@ import {
   selectDepartments,
 } from "../../../store/slicers/common";
 
+import useStyles from '../style';
+import { ICountry } from "../../../shared/models/Interfaces/countries";
+import { IDepartment } from "../../../shared/models/Interfaces/departments";
+
 const SecondStep = (): JSX.Element => {
   const countries = useSelector(selectCountries);
   const departments = useSelector(selectDepartments);
   const [cities, setCities] = useState([]);
   const [jobs, setJobs] = useState([]);
 
-  const { country, department } = useWatch();
+  const { country, department }: any = useWatch();
+  const classes = useStyles();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -27,7 +32,7 @@ const SecondStep = (): JSX.Element => {
   const getCitiesByCountry = useCallback(
     (country) => {
       const selectedCountry = countries.find(
-        (item) => item.countryName === country
+        (item: ICountry) => item.countryName === country
       );
 
       setCities(selectedCountry?.cities);
@@ -37,7 +42,7 @@ const SecondStep = (): JSX.Element => {
 
   const getJobsByDepartment = useCallback(() => {
     const selectedDepartment = departments.find(
-      (item) => item.departmentName === department
+      (item: IDepartment) => item.departmentName === department
     );
 
     setJobs(selectedDepartment?.jobs);
@@ -53,10 +58,10 @@ const SecondStep = (): JSX.Element => {
     if (department) {
       getJobsByDepartment();
     }
-  }, [department, departments.length, getJobsByDepartment]);
+  }, [department, getJobsByDepartment]);
 
   return (
-    <div>
+    <div className={classes.wrapper}>
       <McSelect
         options={departments}
         label="Department"
