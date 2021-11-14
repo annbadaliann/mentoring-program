@@ -1,15 +1,15 @@
 import { useState, useEffect, useMemo } from "react";
+import { useDispatch } from "react-redux";
 import { FormProvider, useForm } from "react-hook-form";
-
 import { useHistory, useLocation } from "react-router-dom";
 
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
 
 import McButton from "../../shared/components/Button";
+import { register } from "../../store/slicers/auth";
 
 import FirstStep from "./components/FirstStep";
 import SecondStep from "./components/SecondStep";
@@ -18,6 +18,8 @@ import ThirdStep from "./components/ThirdStep";
 import { ESteps, ILocation, IRegisterForm } from "./model";
 import constants from "./constants";
 import useStyles from "./style";
+
+import { AppDispatch } from '../../store'
 
 function getStepContent(step: number) {
   switch (step) {
@@ -32,13 +34,13 @@ function getStepContent(step: number) {
   }
 }
 
-const API_URL = "http://localhost:8000/";
 
 function Register() {
   const [activeStep, setActiveStep] = useState(ESteps.FirstStep);
 
   const location: ILocation = useLocation();
   const history = useHistory();
+  const dispatch = useDispatch<AppDispatch>();
 
   const classes = useStyles();
   const isLastStep = useMemo(
@@ -59,26 +61,14 @@ function Register() {
     }
   }, [location?.state?.page]);
 
-  const register = (user: any) => {
-    const reqOpts = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(user),
-    };
-    const url = `${API_URL}users`;
-
-    localStorage.setItem("user", JSON.stringify(user));
-    return fetch(url, reqOpts).then((res) => res.json());
-  };
-
   const onSubmit = async (data: IRegisterForm) => {
-    const res = await register(data);
-    if (res) {
-      setActiveStep(2);
+    const  { meta }  = dispatch(register(data));
+
+    if(meta.requestStatus !== 'fulfilled'){
+      return;
     }
-    // history.push("/");
+
+    setActiveStep(2);
   };
 
   const handleNext = async () => {
@@ -95,7 +85,7 @@ function Register() {
     history.push('/')
   }
 
-  const getClickHandlerByStep = (step) => {
+  const getClickHandlerByStep = (step: number) => {
     switch (step) {
       case ESteps.FirstStep:
         return handleNext;
@@ -106,10 +96,7 @@ function Register() {
     }
   };
 
-  console.log(activeStep)
-
   return (
-    <Container component="main" maxWidth="xs">
       <Box
         style={{
           marginTop: 8,
@@ -146,7 +133,6 @@ function Register() {
           </form>
         </FormProvider>
       </Box>
-    </Container>
   );
 }
 

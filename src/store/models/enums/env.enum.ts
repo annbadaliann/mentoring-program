@@ -1,3 +1,3 @@
 export enum EBaseUrl {
-    mainUrl = 'http://localhost:3000/',
+    mainUrl = 'http://localhost:8000',
   }

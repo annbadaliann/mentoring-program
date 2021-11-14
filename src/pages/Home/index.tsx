@@ -1,36 +1,21 @@
-import { useState, useEffect } from "react";
-
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import Box from "@mui/material/Box";
-
 import Button from "@mui/material/Button";
 
-import columns from "./constants";
 import McTable from "../../shared/components/Table";
-
-import mentorsData from "../../mentors.json";
 import LoadingWrapper from "../../shared/containers/LoadingWrapper";
+import {getMentors , selectMentors} from '../../store/slicers/mentors'
 
-interface IMentor {
-  first_name: string;
-  last_name: string;
-  email: string;
-  gender: string;
-  job_title: string;
-  department: string;
-  country: string;
-  city: string;
-  id: number,
-}
-
-const API_URL = "http://localhost:8000/";
+import columns from "./constants";
 
 const Home = (): JSX.Element => {
-  const [mentors, setMentors] = useState<IMentor[]>([]);
+  const mentors = useSelector(selectMentors);
   const history = useHistory();
+  const dispatch = useDispatch();
 
-  console.log(mentorsData, "mentors");
 
   const goBack = () => {
     history.push({
@@ -39,26 +24,9 @@ const Home = (): JSX.Element => {
     });
   };
 
-
-  const getMentors = async () => {
-    const reqOpts = {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-
-    const url = `${API_URL}employees`;
-
-    const res = await fetch(url, reqOpts).then((res) => res.json())
-
-    setMentors(res);
-  };
-
   useEffect(() => {
-    getMentors();
-  }, []);
-
+    dispatch(getMentors());
+  }, [dispatch]);
 
   return (
     <div>

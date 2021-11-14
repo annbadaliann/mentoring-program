@@ -10,6 +10,7 @@ import McInput from "../../../shared/components/Input";
 
 const FirstStep = () => {
   const { control } = useFormContext();
+  
   return (
     <div>
       <McInput label="First name" name="first_name" />

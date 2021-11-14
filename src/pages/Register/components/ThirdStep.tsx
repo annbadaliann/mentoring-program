@@ -1,18 +1,14 @@
-import { useEffect, useState } from "react";
-import McInput from "../../../shared/components/Input";
-import McTable from "../../../shared/components/Table";
-import columns from "../../Home/constants";
+import { useCallback, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-const API_URL = "http://localhost:8000/";
-interface Employee {
-  id: number;
-  first_name: string;
-  last_name: string;
-  email: string;
-  department: string;
-  country: string;
-  city: string;
-}
+import McTable from "../../../shared/components/Table";
+import EmptyListWrapper from "../../../shared/containers/EmptyListWrapper";
+import { IMentor } from "../../../store/models/interfaces/employee";
+import {
+  getSuggestedMentors,
+  selectSuggestedMentors,
+} from "../../../store/slicers/mentors";
+import columns from "../../Home/constants";
 
 interface User {
   first_name: string;
@@ -22,25 +18,27 @@ interface User {
   country: string;
   city: string;
   gender: string;
-  mentors: Employee["id"][];
+  mentors: IMentor["id"][];
 }
 
 const ThirdStep = (): JSX.Element => {
-  const [mentors, setMentors] = useState([]);
+  const suggesteMentors = useSelector(selectSuggestedMentors);
 
-  const getEmployeesByUser = async (user: User) => {
-    console.log(user, 'user')
-    const searchParams = new URLSearchParams();
-    searchParams.set("department", user.department);
-    searchParams.set("country", user.country);
-    searchParams.set("city", user.city);
-    searchParams.set("job_title", user.job_title);
+  const dispatch = useDispatch();
 
-    const url = `${API_URL}employees?${searchParams}`;
+  const getEmployeesByUser = useCallback(
+    async (user: User) => {
+      const { department, country, city, job_title } = user;
+      const searchParams = new URLSearchParams();
+      searchParams.set("department", department);
+      searchParams.set("country", country);
+      searchParams.set("city", city);
+      searchParams.set("job_title", job_title);
 
-    const res = await fetch(url).then((res) => res.json());
-    setMentors(res);
-  };
+      dispatch(getSuggestedMentors(searchParams));
+    },
+    [dispatch]
+  );
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
@@ -50,13 +48,15 @@ const ThirdStep = (): JSX.Element => {
       mentors: [],
     };
     getEmployeesByUser(newUser);
-  }, []);
+  }, [getEmployeesByUser]);
 
   return (
     <div style={{ width: "100%" }}>
-      <h2>Mentors list </h2>
-      <p>You can filter them, by clicking checkbox </p>
-      <McTable rows={mentors} columns={columns} />
+      <h2>Suggested Mentors list </h2>
+      <p>You can filter them, by clicking checkbox</p>
+      <EmptyListWrapper isEmpty={!suggesteMentors.length} description="No any matches">
+        <McTable rows={suggesteMentors} columns={columns} />
+      </EmptyListWrapper>
     </div>
   );
 };
