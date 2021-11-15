@@ -24,7 +24,7 @@ const Header = (): JSX.Element => {
   return (
     <header className={classes.header}>
       <Container>
-        <Link to="/">
+        <Link to="/home">
           <img src={Logo} alt="logo" className={classes.logo} />
         </Link>
       </Container>
