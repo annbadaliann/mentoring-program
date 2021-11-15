@@ -1,5 +1,5 @@
 import {isRejected} from '@reduxjs/toolkit';
-import store from '..';
+import store from '../index';
 import {setErrorMessage} from '../slicers/app';
 
 const errorHandling =

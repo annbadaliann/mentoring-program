@@ -11,8 +11,8 @@ import {
 } from "../../../store/slicers/common";
 
 import useStyles from '../style';
-import { ICountry } from "../../../shared/models/Interfaces/countries";
-import { IDepartment } from "../../../shared/models/Interfaces/departments";
+import { ICountry } from "../../../shared/models/Interfaces/country";
+import { IDepartment } from "../../../shared/models/Interfaces/department";
 
 const SecondStep = (): JSX.Element => {
   const countries = useSelector(selectCountries);

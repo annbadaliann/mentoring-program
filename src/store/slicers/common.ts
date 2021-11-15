@@ -5,6 +5,7 @@ import { api } from "../utils";
 const initialState: any = {
   countries: [],
   departments: [],
+  genders: [],
 };
 
 const name = "common";
@@ -19,6 +20,13 @@ export const getCountries = createAsyncThunk(
   }
 );
 
+export const getGenders = createAsyncThunk(`${name}/getGenders`, async () => {
+  return api({
+    method: "GET",
+    url: `${EBaseUrl.mainUrl}/genders`,
+  });
+});
+
 export const getDepartments = createAsyncThunk(
   `${name}/getDepartments`,
   async () => {
@@ -28,7 +36,6 @@ export const getDepartments = createAsyncThunk(
     });
   }
 );
-
 
 const commonSlice = createSlice({
   name,
@@ -41,10 +48,14 @@ const commonSlice = createSlice({
     builder.addCase(getDepartments.fulfilled, (state, { payload }) => {
       state.departments = payload;
     });
+    builder.addCase(getGenders.fulfilled, (state, { payload }) => {
+      state.genders = payload;
+    });
   },
 });
 
 export const selectCountries = (state: any) => state.common.countries;
 export const selectDepartments = (state: any) => state.common.departments;
+export const selectGenders = (state: any) => state.common.genders;
 
 export default commonSlice.reducer;

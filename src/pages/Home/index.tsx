@@ -7,7 +7,8 @@ import Button from "@mui/material/Button";
 
 import McTable from "../../shared/components/Table";
 import LoadingWrapper from "../../shared/containers/LoadingWrapper";
-import {getMentors , selectMentors} from '../../store/slicers/mentors'
+import { ESteps } from "../../shared/models/Interfaces/auth";
+import { getMentors, selectMentors } from "../../store/slicers/mentors";
 
 import columns from "./constants";
 
@@ -16,11 +17,10 @@ const Home = (): JSX.Element => {
   const history = useHistory();
   const dispatch = useDispatch();
 
-
   const goBack = () => {
     history.push({
       pathname: "/register",
-      state: { page: 2 },
+      state: { page: ESteps.ThirdStep },
     });
   };
 

@@ -1,8 +1,8 @@
 import { BaseSyntheticEvent, ReactNode, useMemo } from "react";
 import { makeStyles } from "@mui/styles";
-import { Button, Theme } from "@mui/material";
+import { Button } from "@mui/material";
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     padding: "13px 20px",
     borderRadius: "10px",
@@ -12,12 +12,14 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
+type Variant = "text" | "contained" | "outlined";
+
 interface IMcButton {
   children: ReactNode;
   width?: string;
   className?: any;
   clickHandler: (e?: BaseSyntheticEvent) => void | Promise<void> | undefined;
-  variant: string;
+  variant: Variant | undefined;
   disabled: boolean;
 }
 

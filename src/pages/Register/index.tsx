@@ -1,27 +1,26 @@
 import { useState, useEffect, useMemo, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { FormProvider, useForm } from "react-hook-form";
-import { useHistory, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
-import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 
 import McButton from "../../shared/components/Button";
 import { registerUser } from "../../store/slicers/auth";
 
+import { ESteps } from "../../shared/models/Interfaces/auth";
+import { AppDispatch } from "../../store";
+import { selectSuggestedMentors } from "../../store/slicers/mentors";
+import { IUser } from "../../store/models/interfaces/user";
+
+import Steps from "./components/Steps";
 import FirstStep from "./components/FirstStep";
 import SecondStep from "./components/SecondStep";
 import ThirdStep from "./components/ThirdStep";
 
-import { ESteps, ILocation, IRegisterForm } from "./model";
+import { ILocation } from "./model";
 import constants from "./constants";
-import useStyles from "./style";
-
-import { AppDispatch } from "../../store";
-import Steps from "./components/Steps";
-import { selectSuggestedMentors } from "../../store/slicers/mentors";
 
 function getStepContent(step: number) {
   switch (step) {
@@ -38,13 +37,11 @@ function getStepContent(step: number) {
 
 function Register() {
   const [activeStep, setActiveStep] = useState(ESteps.FirstStep);
-  const suggesteMentors = useSelector(selectSuggestedMentors);
+  const suggesteMentors = useSelector(selectSuggestedMentors) 
+  const selectedMentors = useSelector(selectSuggestedMentors);
 
   const location: ILocation = useLocation();
-  const history = useHistory();
   const dispatch = useDispatch<AppDispatch>();
-
-  const classes = useStyles();
 
   const isLastStep = useMemo(
     () => activeStep === ESteps.ThirdStep,
@@ -65,15 +62,14 @@ function Register() {
   }, [location?.state?.page]);
 
   const onSubmit = useCallback(
-    async (data: IRegisterForm) => {
-      const res = dispatch(registerUser({ ...data, selectedMentors: [] }));
+    async (data: IUser) => {
+      const res: any = dispatch(registerUser({ ...data, suggestedMentors: selectedMentors }));
 
       if (res) {
         setActiveStep(ESteps.ThirdStep);
-        // history.push('/')
       }
     },
-    [dispatch]
+    [dispatch, selectedMentors]
   );
 
   const goSecondStep = useCallback(async () => {
@@ -82,7 +78,6 @@ function Register() {
     if (isStepValid)
       setActiveStep((prevActiveStep) => prevActiveStep + constants.step);
   }, [trigger]);
-
 
   const goThirdStep = useCallback(async () => {
     const isStepValid = await trigger();
@@ -136,7 +131,10 @@ function Register() {
                 Back
               </McButton>
             </Box>
-            <McButton clickHandler={getClickHandlerByStep(activeStep)} disabled={!suggesteMentors.length && isLastStep}>
+            <McButton
+              clickHandler={getClickHandlerByStep(activeStep)}
+              disabled={!suggesteMentors.length && isLastStep}
+            >
               {isLastStep ? "Submit" : "Next"}
             </McButton>
           </Box>

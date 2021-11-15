@@ -5,7 +5,7 @@ import { api } from "../utils";
 
 const initialState: any = {
   mentors: [],
-  suggestedMentors: []
+  suggestedMentors: [],
 };
 
 const name = "mentors";
@@ -17,12 +17,15 @@ export const getMentors = createAsyncThunk(`${name}/getMentors`, async () => {
   });
 });
 
-export const getSuggestedMentors = createAsyncThunk(`${name}/getSuggestedMentors`, async (queryList: ISuggesstedMentor) => {
-  return api({
-    method: "GET",
-    url: `${EBaseUrl.mainUrl}/${name}?${queryList}`,
-  });
-});
+export const getSuggestedMentors = createAsyncThunk(
+  `${name}/getSuggestedMentors`,
+  async (queryList: ISuggesstedMentor) => {
+    return api({
+      method: "GET",
+      url: `${EBaseUrl.mainUrl}/${name}?${queryList}`,
+    });
+  }
+);
 
 const mentorSlice = createSlice({
   name,
@@ -39,6 +42,7 @@ const mentorSlice = createSlice({
 });
 
 export const selectMentors = (state: any) => state.mentors.mentors;
-export const selectSuggestedMentors = (state: any) => state.mentors.suggestedMentors;
+export const selectSuggestedMentors = (state: any) =>
+  state.mentors.suggestedMentors;
 
 export default mentorSlice.reducer;
