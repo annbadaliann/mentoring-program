@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useWatch } from "react-hook-form";
 
@@ -10,8 +10,11 @@ import {
   getSuggestedMentors,
   selectSuggestedMentors,
 } from "../../../store/slicers/mentors";
+import { IMentor } from "../../../store/models/interfaces/mentor";
+
 import columns from "../../Home/constants";
 import useStyles from "../style";
+import { selectUser } from "../../../store/slicers/auth";
 
 interface IUser {
   first_name: string;
@@ -26,8 +29,19 @@ interface IUser {
 
 const ThirdStep = (): JSX.Element => {
   const suggesteMentors = useSelector(selectSuggestedMentors);
-
   const form = useWatch()
+  const user = useSelector(selectUser);
+  const [mentors, setMentors] = useState([]);
+
+  useEffect(() => {
+    const newRows = suggesteMentors.map((item: IMentor) => ({
+      ...item,
+      isSelected: true,
+    }));
+    setMentors(newRows);
+  }, [suggesteMentors]);
+
+  // const form = useWatch();
   const classes = useStyles();
 
   const dispatch = useDispatch();
@@ -47,8 +61,8 @@ const ThirdStep = (): JSX.Element => {
   );
 
   useEffect(() => {
-    getMentorsByUser(form);
-  }, [form, getMentorsByUser]);
+    getMentorsByUser(user || form);
+  }, [user, getMentorsByUser, form]);
 
   return (
     <div style={{ width: "100%" }}>
@@ -59,7 +73,7 @@ const ThirdStep = (): JSX.Element => {
           isEmpty={!suggesteMentors.length}
           description="No any matches"
         >
-          <McTable rows={suggesteMentors} columns={columns} />
+          <McTable rows={mentors} columns={columns} isSelectable />
         </EmptyListWrapper>
       </Paper>
     </div>

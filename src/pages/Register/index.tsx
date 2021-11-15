@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { FormProvider, useForm } from "react-hook-form";
-import { useLocation } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -11,7 +11,10 @@ import { registerUser } from "../../store/slicers/auth";
 
 import { ESteps } from "../../shared/models/Interfaces/auth";
 import { AppDispatch } from "../../store";
-import { selectSuggestedMentors } from "../../store/slicers/mentors";
+import {
+  selectSelectedMentors,
+  selectSuggestedMentors,
+} from "../../store/slicers/mentors";
 import { IUser } from "../../store/models/interfaces/user";
 
 import Steps from "./components/Steps";
@@ -37,10 +40,11 @@ function getStepContent(step: number) {
 
 function Register() {
   const [activeStep, setActiveStep] = useState(ESteps.FirstStep);
-  const suggesteMentors = useSelector(selectSuggestedMentors) 
-  const selectedMentors = useSelector(selectSuggestedMentors);
+  const suggesteMentors = useSelector(selectSuggestedMentors);
+  const selectedMentors = useSelector(selectSelectedMentors);
 
   const location: ILocation = useLocation();
+  const history = useHistory();
   const dispatch = useDispatch<AppDispatch>();
 
   const isLastStep = useMemo(
@@ -63,13 +67,15 @@ function Register() {
 
   const onSubmit = useCallback(
     async (data: IUser) => {
-      const res: any = dispatch(registerUser({ ...data, suggestedMentors: selectedMentors }));
-
+      const res: any = dispatch(
+        registerUser({ ...data})
+      );
+      debugger;
       if (res) {
-        setActiveStep(ESteps.ThirdStep);
+        history.push("/home");
       }
     },
-    [dispatch, selectedMentors]
+    [dispatch, history]
   );
 
   const goSecondStep = useCallback(async () => {

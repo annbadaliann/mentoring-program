@@ -23,7 +23,6 @@ const FirstStep = () => {
     dispatch(getGenders())
   }, [dispatch])
 
-  console.log(genders, 'genders')
   return (
     <div className={classes.wrapper}>
       <McInput label="First name" name="first_name" />
@@ -40,7 +39,7 @@ const FirstStep = () => {
               {genders.map((item) => (
                 <FormControlLabel
                   value={item.value}
-                  control={<Radio checked={item.id === +field.value} />}
+                  control={<Radio />}
                   label={item.label}
                 />
               ))}

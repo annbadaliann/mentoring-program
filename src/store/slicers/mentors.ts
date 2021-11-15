@@ -6,6 +6,7 @@ import { api } from "../utils";
 const initialState: any = {
   mentors: [],
   suggestedMentors: [],
+  selectedMentors: [],
 };
 
 const name = "mentors";
@@ -30,7 +31,11 @@ export const getSuggestedMentors = createAsyncThunk(
 const mentorSlice = createSlice({
   name,
   initialState,
-  reducers: {},
+  reducers: {
+    setSelectedMentors(state, { payload }) {
+      state.selectedMentors = payload;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(getMentors.fulfilled, (state, { payload }) => {
       state.mentors = payload;
@@ -41,7 +46,11 @@ const mentorSlice = createSlice({
   },
 });
 
+export const { setSelectedMentors } = mentorSlice.actions;
+
 export const selectMentors = (state: any) => state.mentors.mentors;
+export const selectSelectedMentors = (state: any) =>
+  state.mentors.selectedMentors;
 export const selectSuggestedMentors = (state: any) =>
   state.mentors.suggestedMentors;
 
