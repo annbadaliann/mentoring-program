@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { EBaseUrl } from "../models/enums/env.enum";
-import { IMentor, ISuggesstedMentor } from "../models/interfaces/mentor";
 import { api } from "../utils";
 
 const initialState: any = {

@@ -9,5 +9,5 @@ export interface IUser {
   city: string;
   gender: string;
   job_title: string;
-  suggestedMentors: IMentor[];
+  suggestedMentors?: IMentor[];
 }

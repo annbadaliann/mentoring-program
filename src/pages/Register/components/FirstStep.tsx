@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 import { Controller, useFormContext } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -8,22 +10,21 @@ import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 
 import McInput from "../../../shared/components/Input";
+import { IGender } from "../../../shared/models/Interfaces/genders";
 import { getGenders, selectGenders } from "../../../store/slicers/common";
 
 import useStyles from "../style";
-import { useEffect } from "react";
-import { IGender } from "../../../shared/models/Interfaces/genders";
 
 const FirstStep = () => {
   const genders: IGender[] = useSelector(selectGenders);
-  
+
   const { control } = useFormContext();
   const classes = useStyles();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getGenders())
-  }, [dispatch])
+    dispatch(getGenders());
+  }, [dispatch]);
 
   return (
     <div className={classes.wrapper}>

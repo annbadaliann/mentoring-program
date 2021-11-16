@@ -126,6 +126,7 @@ function Register() {
                 disabled={activeStep === ESteps.FirstStep}
                 clickHandler={handleBack}
                 width="140px"
+                className={classes.form}
               >
                 Back
               </McButton>

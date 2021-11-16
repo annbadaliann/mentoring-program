@@ -10,7 +10,7 @@ import {
   selectDepartments,
 } from "../../../store/slicers/common";
 
-import useStyles from '../style';
+import useStyles from "../style";
 import { ICountry } from "../../../shared/models/Interfaces/country";
 import { IDepartment } from "../../../shared/models/Interfaces/department";
 
@@ -21,6 +21,7 @@ const SecondStep = (): JSX.Element => {
   const [jobs, setJobs] = useState([]);
 
   const { country, department }: any = useWatch();
+
   const classes = useStyles();
   const dispatch = useDispatch();
 

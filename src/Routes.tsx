@@ -5,16 +5,9 @@ import Register from "./pages/Register";
 const Routes = (): JSX.Element => {
   return (
     <Switch>
-      <Route
-        exact
-        path="/"
-        render={() => {
-          return <Redirect to="/register" />;
-        }}
-      />
+      <Route exact path="/" render={() => <Redirect to="/register" />} />
       <Route path="/home" exact component={Home} />
       <Route path="/register" exact component={Register} />
-      {/* <Route path='*' component={NotFound} /> */}
     </Switch>
   );
 };

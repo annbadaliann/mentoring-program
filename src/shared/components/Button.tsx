@@ -1,4 +1,4 @@
-import { BaseSyntheticEvent, ReactNode, useMemo } from "react";
+import { ReactNode, useMemo } from "react";
 import { makeStyles } from "@mui/styles";
 import { Button } from "@mui/material";
 
@@ -17,8 +17,8 @@ type Variant = "text" | "contained" | "outlined";
 interface IMcButton {
   children: ReactNode;
   width?: string;
-  className?: any;
-  clickHandler: (e?: any) => any;
+  className?: string | undefined;
+  clickHandler: any;
   variant?: Variant | undefined;
   disabled: boolean;
 }
