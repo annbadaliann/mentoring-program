@@ -11,35 +11,40 @@ import Table from "@mui/material/Table";
 import { useDispatch } from "react-redux";
 import { setSelectedMentors } from "../../store/slicers/mentors";
 
-interface IColumn<T, K extends keyof T> {
+interface IColumn {
   title: string;
-  field: K;
+  field: string;
 }
-interface IMcTableProps<T, K extends keyof T> {
-  rows: T[];
-  columns: IColumn<T, K>[];
+
+interface IRow {
+  id: string;
+  isSelected?: boolean;
+}
+interface IMcTableProps {
+  rows: IRow[];
+  columns: IColumn[];
   disableCheckbox?: boolean;
   isSelectable?: boolean;
 }
 
-const McTable = <T, K extends keyof T>({
+const McTable = ({
   rows,
   columns,
   disableCheckbox = false,
   isSelectable = false,
-}: IMcTableProps<T & { id: number }, K>) => {
-  const [selectableRows, setSelectableRows] = useState([]);
+}: IMcTableProps) => {
+  const [selectableRows, setSelectableRows] = useState<IRow[]>([]);
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (rows?.length) {
       setSelectableRows(rows);
-      const selectedRows = rows.filter((item) => item.isSelected);
+      const selectedRows = rows.filter((item: IRow) => item.isSelected);
       dispatch(setSelectedMentors(selectedRows));
     }
   }, [dispatch, rows]);
 
-  const handleSelectRow = (id: number) => {
+  const handleSelectRow = (id: string) => {
     const rows = [...selectableRows];
     const row = selectableRows.find((item) => item.id === id);
     const newRows = rows.map((item) => {
@@ -79,7 +84,7 @@ const McTable = <T, K extends keyof T>({
                 </TableCell>
               )}
               {columns.map((col) => (
-                <TableCell component="th" scope="row" key={col.id}>
+                <TableCell component="th" scope="row" key={col.field}>
                   {row[col.field]}
                 </TableCell>
               ))}

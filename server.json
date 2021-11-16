@@ -1,604 +1,5 @@
 {
-  "users": [
-    {
-      "first_name": "Ann",
-      "last_name": "Badalyan",
-      "email": "annbadaliann2000@gmail.com",
-      "gender": "Female",
-      "department": "Human Resources",
-      "job_title": "Health Coach II",
-      "country": "Armenia",
-      "city": "Sevan",
-      "id": 1
-    },
-    {
-      "first_name": "Ann",
-      "last_name": "Badalyan",
-      "email": "annbadaliann2000@gmail.com",
-      "gender": "Female",
-      "department": "Human Resources",
-      "job_title": "Health Coach II",
-      "country": "Armenia",
-      "city": "Sevan",
-      "id": 2
-    },
-    {
-      "first_name": "Ann",
-      "last_name": "Badalyan",
-      "email": "annbadaliann2000@gmail.com",
-      "gender": "Female",
-      "department": "Human Resources",
-      "job_title": "Health Coach II",
-      "country": "Armenia",
-      "city": "Sevan",
-      "id": 3
-    },
-    {
-      "first_name": "Ann",
-      "last_name": "Badalyan",
-      "email": "annbadaliann2000@gmail.com",
-      "gender": "Female",
-      "department": "Human Resources",
-      "job_title": "Health Coach II",
-      "country": "Armenia",
-      "city": "Sevan",
-      "id": 4
-    },
-    {
-      "first_name": "Ann",
-      "last_name": "Badalyan",
-      "email": "annbadaliann2000@gmail.com",
-      "gender": "Female",
-      "department": "Human Resources",
-      "job_title": "Health Coach II",
-      "country": "Armenia",
-      "city": "Sevan",
-      "id": 5
-    },
-    {
-      "first_name": "Ann",
-      "last_name": "Badalyan",
-      "email": "annbadaliann2000@gmail.com",
-      "gender": "Female",
-      "department": "Human Resources",
-      "job_title": "Health Coach II",
-      "country": "Armenia",
-      "city": "Sevan",
-      "id": 6
-    },
-    {
-      "first_name": "Ann",
-      "last_name": "Badalyan",
-      "email": "annbadaliann2000@gmail.com",
-      "gender": "Female",
-      "department": "Human Resources",
-      "job_title": "Health Coach II",
-      "country": "Armenia",
-      "city": "Sevan",
-      "id": 7
-    },
-    {
-      "first_name": "Ann",
-      "last_name": "Badalyan",
-      "email": "annbadaliann2000@gmail.com",
-      "gender": "Female",
-      "department": "Human Resources",
-      "job_title": "Health Coach II",
-      "country": "Armenia",
-      "city": "Sevan",
-      "id": 8
-    },
-    {
-      "first_name": "Ann",
-      "last_name": "Badalyan",
-      "email": "annbadaliann2000@gmail.com",
-      "gender": "Female",
-      "department": "Human Resources",
-      "job_title": "Health Coach II",
-      "country": "Armenia",
-      "city": "Sevan",
-      "id": 9
-    },
-    {
-      "first_name": "Ann",
-      "last_name": "Badalyan",
-      "email": "annbadaliann2000@gmail.com",
-      "gender": "Female",
-      "department": "Human Resources",
-      "job_title": "Health Coach II",
-      "country": "Armenia",
-      "city": "Sevan",
-      "id": 10
-    },
-    {
-      "first_name": "Ann",
-      "last_name": "Badalyan",
-      "email": "annbadaliann2000@gmail.com",
-      "gender": "Female",
-      "department": "Human Resources",
-      "job_title": "Health Coach II",
-      "country": "Armenia",
-      "city": "Sevan",
-      "id": 11
-    },
-    {
-      "first_name": "Ann",
-      "last_name": "Badalyan",
-      "email": "annbadaliann2000@gmail.com",
-      "gender": "Female",
-      "department": "Human Resources",
-      "job_title": "Health Coach II",
-      "country": "Armenia",
-      "city": "Sevan",
-      "id": 12
-    },
-    {
-      "first_name": "Ann",
-      "last_name": "Badalyan",
-      "email": "annbadaliann2000@gmail.com",
-      "gender": "Female",
-      "department": "Human Resources",
-      "job_title": "Health Coach II",
-      "country": "Armenia",
-      "city": "Sevan",
-      "selectedMentors": [
-        {
-          "first_name": "Donny",
-          "last_name": "Mannakee",
-          "email": "dmannakee2@psu.edu",
-          "gender": "Female",
-          "department": "Human Resources",
-          "job_title": "Health Coach II",
-          "country": "Armenia",
-          "city": "Sevan",
-          "id": "2",
-          "isSelected": true
-        },
-        {
-          "first_name": "Anna",
-          "last_name": "Badalyan",
-          "email": "dmannakee2@psu.edu",
-          "gender": "Female",
-          "department": "Human Resources",
-          "job_title": "Health Coach II",
-          "country": "Armenia",
-          "city": "Sevan",
-          "id": "3",
-          "isSelected": true
-        }
-      ],
-      "id": 13
-    },
-    {
-      "first_name": "Ann",
-      "last_name": "Badalyan",
-      "email": "annbadaliann2000@gmail.com",
-      "gender": "Female",
-      "department": "Human Resources",
-      "job_title": "Health Coach II",
-      "country": "Armenia",
-      "city": "Sevan",
-      "selectedMentors": [
-        {
-          "first_name": "Donny",
-          "last_name": "Mannakee",
-          "email": "dmannakee2@psu.edu",
-          "gender": "Female",
-          "department": "Human Resources",
-          "job_title": "Health Coach II",
-          "country": "Armenia",
-          "city": "Sevan",
-          "id": "2",
-          "isSelected": true
-        },
-        {
-          "first_name": "Anna",
-          "last_name": "Badalyan",
-          "email": "dmannakee2@psu.edu",
-          "gender": "Female",
-          "department": "Human Resources",
-          "job_title": "Health Coach II",
-          "country": "Armenia",
-          "city": "Sevan",
-          "id": "3",
-          "isSelected": true
-        }
-      ],
-      "id": 14
-    },
-    {
-      "first_name": "Ann",
-      "last_name": "Badalyan",
-      "email": "annbadaliann2000@gmail.com",
-      "gender": "Female",
-      "department": "Human Resources",
-      "job_title": "Health Coach II",
-      "country": "Armenia",
-      "city": "Sevan",
-      "selectedMentors": [
-        {
-          "first_name": "Donny",
-          "last_name": "Mannakee",
-          "email": "dmannakee2@psu.edu",
-          "gender": "Female",
-          "department": "Human Resources",
-          "job_title": "Health Coach II",
-          "country": "Armenia",
-          "city": "Sevan",
-          "id": "2",
-          "isSelected": true
-        },
-        {
-          "first_name": "Anna",
-          "last_name": "Badalyan",
-          "email": "dmannakee2@psu.edu",
-          "gender": "Female",
-          "department": "Human Resources",
-          "job_title": "Health Coach II",
-          "country": "Armenia",
-          "city": "Sevan",
-          "id": "3",
-          "isSelected": true
-        }
-      ],
-      "id": 15
-    },
-    {
-      "first_name": "Ann",
-      "last_name": "Badalyan",
-      "email": "annbadaliann2000@gmail.com",
-      "gender": "Female",
-      "department": "Human Resources",
-      "job_title": "Health Coach II",
-      "country": "Armenia",
-      "city": "Sevan",
-      "selectedMentors": [
-        {
-          "first_name": "Donny",
-          "last_name": "Mannakee",
-          "email": "dmannakee2@psu.edu",
-          "gender": "Female",
-          "department": "Human Resources",
-          "job_title": "Health Coach II",
-          "country": "Armenia",
-          "city": "Sevan",
-          "id": "2",
-          "isSelected": true
-        }
-      ],
-      "id": 16
-    },
-    {
-      "first_name": "Ann",
-      "last_name": "Badalyan",
-      "email": "annbadaliann2000@gmail.com",
-      "gender": "Female",
-      "department": "Human Resources",
-      "job_title": "Health Coach II",
-      "country": "Armenia",
-      "city": "Sevan",
-      "selectedMentors": [
-        {
-          "first_name": "Anna",
-          "last_name": "Badalyan",
-          "email": "dmannakee2@psu.edu",
-          "gender": "Female",
-          "department": "Human Resources",
-          "job_title": "Health Coach II",
-          "country": "Armenia",
-          "city": "Sevan",
-          "id": "3",
-          "isSelected": true
-        }
-      ],
-      "id": 17
-    },
-    {
-      "first_name": "Ann",
-      "last_name": "Badalyan",
-      "email": "annbadaliann2000@gmail.com",
-      "gender": "Female",
-      "department": "Human Resources",
-      "job_title": "Health Coach II",
-      "country": "Armenia",
-      "city": "Sevan",
-      "selectedMentors": [
-        {
-          "first_name": "Anna",
-          "last_name": "Badalyan",
-          "email": "dmannakee2@psu.edu",
-          "gender": "Female",
-          "department": "Human Resources",
-          "job_title": "Health Coach II",
-          "country": "Armenia",
-          "city": "Sevan",
-          "id": "3",
-          "isSelected": true
-        }
-      ],
-      "id": 18
-    },
-    {
-      "first_name": "Ann",
-      "last_name": "Badalyan",
-      "email": "annbadaliann2000@gmail.com",
-      "gender": "Female",
-      "department": "Human Resources",
-      "job_title": "Health Coach II",
-      "country": "Armenia",
-      "city": "Sevan",
-      "selectedMentors": [
-        {
-          "first_name": "Donny",
-          "last_name": "Mannakee",
-          "email": "dmannakee2@psu.edu",
-          "gender": "Female",
-          "department": "Human Resources",
-          "job_title": "Health Coach II",
-          "country": "Armenia",
-          "city": "Sevan",
-          "id": "2",
-          "isSelected": true
-        }
-      ],
-      "id": 19
-    },
-    {
-      "first_name": "",
-      "last_name": "",
-      "email": "",
-      "selectedMentors": [
-        {
-          "first_name": "Donny",
-          "last_name": "Mannakee",
-          "email": "dmannakee2@psu.edu",
-          "gender": "Female",
-          "department": "Human Resources",
-          "job_title": "Health Coach II",
-          "country": "Armenia",
-          "city": "Sevan",
-          "id": "2",
-          "isSelected": true
-        },
-        {
-          "first_name": "Anna",
-          "last_name": "Badalyan",
-          "email": "dmannakee2@psu.edu",
-          "gender": "Female",
-          "department": "Human Resources",
-          "job_title": "Health Coach II",
-          "country": "Armenia",
-          "city": "Sevan",
-          "id": "3",
-          "isSelected": true
-        }
-      ],
-      "id": 20
-    },
-    {
-      "first_name": "Ann",
-      "last_name": "Badalyan",
-      "email": "annbadaliann2000@gmail.com",
-      "gender": "Female",
-      "department": "Human Resources",
-      "job_title": "Health Coach II",
-      "country": "Armenia",
-      "city": "Sevan",
-      "selectedMentors": [
-        {
-          "first_name": "Anna",
-          "last_name": "Badalyan",
-          "email": "dmannakee2@psu.edu",
-          "gender": "Female",
-          "department": "Human Resources",
-          "job_title": "Health Coach II",
-          "country": "Armenia",
-          "city": "Sevan",
-          "id": "3",
-          "isSelected": true
-        }
-      ],
-      "id": 21
-    },
-    {
-      "first_name": "",
-      "last_name": "",
-      "email": "",
-      "selectedMentors": [
-        {
-          "first_name": "Anna",
-          "last_name": "Badalyan",
-          "email": "dmannakee2@psu.edu",
-          "gender": "Female",
-          "department": "Human Resources",
-          "job_title": "Health Coach II",
-          "country": "Armenia",
-          "city": "Sevan",
-          "id": "3",
-          "isSelected": true
-        }
-      ],
-      "id": 22
-    },
-    {
-      "first_name": "Ann",
-      "last_name": "Badalyan",
-      "email": "annbadaliann2000@gmail.com",
-      "gender": "Female",
-      "department": "Human Resources",
-      "job_title": "Health Coach II",
-      "country": "Armenia",
-      "city": "Sevan",
-      "selectedMentors": [
-        {
-          "first_name": "Donny",
-          "last_name": "Mannakee",
-          "email": "dmannakee2@psu.edu",
-          "gender": "Female",
-          "department": "Human Resources",
-          "job_title": "Health Coach II",
-          "country": "Armenia",
-          "city": "Sevan",
-          "id": "2",
-          "isSelected": true
-        }
-      ],
-      "id": 23
-    },
-    {
-      "first_name": "Ann",
-      "last_name": "Badalyan",
-      "email": "annbadaliann2000@gmail.com",
-      "gender": "Female",
-      "department": "Human Resources",
-      "job_title": "Health Coach II",
-      "country": "Armenia",
-      "city": "Sevan",
-      "selectedMentors": [
-        {
-          "first_name": "Donny",
-          "last_name": "Mannakee",
-          "email": "dmannakee2@psu.edu",
-          "gender": "Female",
-          "department": "Human Resources",
-          "job_title": "Health Coach II",
-          "country": "Armenia",
-          "city": "Sevan",
-          "id": "2",
-          "isSelected": true
-        },
-        {
-          "first_name": "Anna",
-          "last_name": "Badalyan",
-          "email": "dmannakee2@psu.edu",
-          "gender": "Female",
-          "department": "Human Resources",
-          "job_title": "Health Coach II",
-          "country": "Armenia",
-          "city": "Sevan",
-          "id": "3",
-          "isSelected": true
-        }
-      ],
-      "id": 24
-    },
-    {
-      "first_name": "Ann",
-      "last_name": "Badalyan",
-      "email": "annbadaliann2000@gmail.com",
-      "gender": "Female",
-      "department": "Human Resources",
-      "job_title": "Health Coach II",
-      "country": "Armenia",
-      "city": "Sevan",
-      "selectedMentors": [
-        {
-          "first_name": "Donny",
-          "last_name": "Mannakee",
-          "email": "dmannakee2@psu.edu",
-          "gender": "Female",
-          "department": "Human Resources",
-          "job_title": "Health Coach II",
-          "country": "Armenia",
-          "city": "Sevan",
-          "id": "2",
-          "isSelected": true
-        },
-        {
-          "first_name": "Anna",
-          "last_name": "Badalyan",
-          "email": "dmannakee2@psu.edu",
-          "gender": "Female",
-          "department": "Human Resources",
-          "job_title": "Health Coach II",
-          "country": "Armenia",
-          "city": "Sevan",
-          "id": "3",
-          "isSelected": true
-        }
-      ],
-      "id": 25
-    },
-    {
-      "first_name": "Ann",
-      "last_name": "Badalyan",
-      "email": "annbadaliann2000@gmail.com",
-      "gender": "Female",
-      "department": "Human Resources",
-      "job_title": "Health Coach II",
-      "country": "Armenia",
-      "city": "Sevan",
-      "selectedMentors": [
-        {
-          "first_name": "Donny",
-          "last_name": "Mannakee",
-          "email": "dmannakee2@psu.edu",
-          "gender": "Female",
-          "department": "Human Resources",
-          "job_title": "Health Coach II",
-          "country": "Armenia",
-          "city": "Sevan",
-          "id": "2",
-          "isSelected": true
-        },
-        {
-          "first_name": "Anna",
-          "last_name": "Badalyan",
-          "email": "dmannakee2@psu.edu",
-          "gender": "Female",
-          "department": "Human Resources",
-          "job_title": "Health Coach II",
-          "country": "Armenia",
-          "city": "Sevan",
-          "id": "3",
-          "isSelected": true
-        }
-      ],
-      "id": 26
-    },
-    {
-      "selectedMentors": [
-        {
-          "first_name": "Anna",
-          "last_name": "Badalyan",
-          "email": "dmannakee2@psu.edu",
-          "gender": "Female",
-          "department": "Human Resources",
-          "job_title": "Health Coach II",
-          "country": "Armenia",
-          "city": "Sevan",
-          "id": "3",
-          "isSelected": true
-        }
-      ],
-      "id": 27
-    },
-    {
-      "first_name": "Ann",
-      "last_name": "Badalyan",
-      "email": "annbadaliann2000@gmail.com",
-      "gender": "Female",
-      "department": "Human Resources",
-      "job_title": "Health Coach II",
-      "country": "Armenia",
-      "city": "Sevan",
-      "selectedMentors": [
-        {
-          "first_name": "Anna",
-          "last_name": "Badalyan",
-          "email": "dmannakee2@psu.edu",
-          "gender": "Female",
-          "department": "Human Resources",
-          "job_title": "Health Coach II",
-          "country": "Armenia",
-          "city": "Sevan",
-          "id": "3",
-          "isSelected": true
-        }
-      ],
-      "id": 28
-    }
-  ],
+  "users": [],
   "mentors": [
     {
       "first_name": "Marigold",
@@ -6413,13 +5814,7 @@
     },
     {
       "countryName": "Botswana",
-      "cities": [
-        "Francistown",
-        "Gaborone",
-        "Orapa",
-        "Serowe",
-        "Village"
-      ]
+      "cities": ["Francistown", "Gaborone", "Orapa", "Serowe", "Village"]
     },
     {
       "countryName": "Brazil",
@@ -12952,13 +12347,7 @@
     },
     {
       "countryName": "Congo",
-      "cities": [
-        "Banana",
-        "Goma",
-        "Kinshasa",
-        "Likasi",
-        "Lubumbashi"
-      ]
+      "cities": ["Banana", "Goma", "Kinshasa", "Likasi", "Lubumbashi"]
     },
     {
       "countryName": "Costa Rica",
@@ -28419,13 +27808,7 @@
     },
     {
       "countryName": "Gabon",
-      "cities": [
-        "Gamba",
-        "Libreville",
-        "Mamagnia",
-        "Moanda",
-        "Port-Gentil"
-      ]
+      "cities": ["Gamba", "Libreville", "Mamagnia", "Moanda", "Port-Gentil"]
     },
     {
       "countryName": "Georgia",
@@ -45149,13 +44532,7 @@
     },
     {
       "countryName": "Kosovo",
-      "cities": [
-        "Dunavo",
-        "Ferizaj",
-        "Mitrovica",
-        "Pristina",
-        "Prizren"
-      ]
+      "cities": ["Dunavo", "Ferizaj", "Mitrovica", "Pristina", "Prizren"]
     },
     {
       "countryName": "Kuwait",
@@ -45256,13 +44633,7 @@
     },
     {
       "countryName": "Libya",
-      "cities": [
-        "Benghazi",
-        "Misratah",
-        "Sabha",
-        "Tripoli",
-        "Zliten"
-      ]
+      "cities": ["Benghazi", "Misratah", "Sabha", "Tripoli", "Zliten"]
     },
     {
       "countryName": "Liechtenstein",
@@ -46722,14 +46093,7 @@
     },
     {
       "countryName": "Myanmar [Burma]",
-      "cities": [
-        "Hlaing",
-        "Inya",
-        "Kyauktada",
-        "Mandalay",
-        "Wagan",
-        "Yangon"
-      ]
+      "cities": ["Hlaing", "Inya", "Kyauktada", "Mandalay", "Wagan", "Yangon"]
     },
     {
       "countryName": "Namibia",
@@ -48233,13 +47597,7 @@
     },
     {
       "countryName": "New Caledonia",
-      "cities": [
-        "Dumbea",
-        "Mont-Dore",
-        "Noumea",
-        "Nouville",
-        "Paita"
-      ]
+      "cities": ["Dumbea", "Mont-Dore", "Noumea", "Nouville", "Paita"]
     },
     {
       "countryName": "New Zealand",
@@ -57751,13 +57109,7 @@
     },
     {
       "countryName": "Swaziland",
-      "cities": [
-        "Kwaluseni",
-        "Lobamba",
-        "Manzini",
-        "Mbabane",
-        "Piggs Peak"
-      ]
+      "cities": ["Kwaluseni", "Lobamba", "Manzini", "Mbabane", "Piggs Peak"]
     },
     {
       "countryName": "Sweden",
@@ -85438,9 +84790,7 @@
   "departments": [
     {
       "departmentName": "Marketing",
-      "jobs": [
-        "Analog Circuit Design manager"
-      ]
+      "jobs": ["Analog Circuit Design manager"]
     },
     {
       "departmentName": "Support",
@@ -85461,18 +84811,11 @@
     },
     {
       "departmentName": "Product Management",
-      "jobs": [
-        "Senior Editor",
-        "Recruiting Manager",
-        "Safety Technician I"
-      ]
+      "jobs": ["Senior Editor", "Recruiting Manager", "Safety Technician I"]
     },
     {
       "departmentName": "Services",
-      "jobs": [
-        "Account Coordinator",
-        "Account Representative IV"
-      ]
+      "jobs": ["Account Coordinator", "Account Representative IV"]
     },
     {
       "departmentName": "Legal",
@@ -85485,16 +84828,11 @@
     },
     {
       "departmentName": "Accounting",
-      "jobs": [
-        "Research Nurse",
-        "Computer Systems Analyst IV"
-      ]
+      "jobs": ["Research Nurse", "Computer Systems Analyst IV"]
     },
     {
       "departmentName": "Sales",
-      "jobs": [
-        "Help Desk Technician"
-      ]
+      "jobs": ["Help Desk Technician"]
     }
   ],
   "genders": [
