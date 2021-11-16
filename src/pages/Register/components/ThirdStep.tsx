@@ -54,8 +54,6 @@ const ThirdStep = (): JSX.Element => {
 
   const classes = useStyles();
 
-  console.log(selectedMentors, "selected mentors");
-
   const dispatch = useDispatch();
 
   const getMentorsByUser = useCallback(
