@@ -41,11 +41,24 @@ const McTable = <T, K extends keyof T>({
 
   const handleSelectRow = (id: number) => {
     const rows = [...selectableRows];
-    const row = rows.find((item) => item.id === id);
+    const row = selectableRows.find((item) => item.id === id);
+    debugger;
 
-    row.isSelected = !row.isSelected;
+    const newRows = rows.map((item) => {
+      return {
+        ...item,
+        isSelected: item.id === row.id ? !item.isSelected : item.isSelected,
+      };
+    });
 
-    setSelectableRows(rows);
+    debugger;
+
+    // row.isSelected = !row.isSelected;
+
+    setSelectableRows(newRows);
+
+    const selectedRows = newRows.filter((item) => item.isSelected);
+    dispatch(setSelectedMentors(selectedRows));
   };
 
   return (

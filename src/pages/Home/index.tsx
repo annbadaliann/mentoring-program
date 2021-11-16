@@ -31,6 +31,8 @@ const Home = (): JSX.Element => {
     });
   };
 
+  console.log(selectedMentors)
+
   useEffect(() => {
     const newMentors = mentors.map((mentor: IMentor) => {
       return {

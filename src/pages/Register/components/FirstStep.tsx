@@ -12,9 +12,10 @@ import { getGenders, selectGenders } from "../../../store/slicers/common";
 
 import useStyles from "../style";
 import { useEffect } from "react";
+import { IGender } from "../../../shared/models/Interfaces/genders";
 
 const FirstStep = () => {
-  const genders = useSelector(selectGenders);
+  const genders: IGender[] = useSelector(selectGenders);
   const { control } = useFormContext();
   const classes = useStyles();
   const dispatch = useDispatch()

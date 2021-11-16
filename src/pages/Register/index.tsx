@@ -7,7 +7,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 
 import McButton from "../../shared/components/Button";
-import { registerUser } from "../../store/slicers/auth";
+import { registerUser, selectUser } from "../../store/slicers/auth";
 
 import { ESteps } from "../../shared/models/Interfaces/auth";
 import { AppDispatch } from "../../store";
@@ -44,6 +44,7 @@ function Register() {
   const selectedMentors = useSelector(selectSelectedMentors);
 
   const location: ILocation = useLocation();
+  const user = useSelector(selectUser);
   const history = useHistory();
   const dispatch = useDispatch<AppDispatch>();
 
@@ -67,12 +68,12 @@ function Register() {
 
   const onSubmit = useCallback(
     async (data: IUser) => {
-      const res: any = await dispatch(registerUser(data));
-      if (res) {
-        history.push("/home");
-      }
+      const form = user || data;
+      debugger;
+      const res: any = await dispatch(registerUser({...form, selectedMentors}));
+      history.push("/home");
     },
-    [dispatch, history]
+    [dispatch, history, selectedMentors]
   );
 
   const goSecondStep = useCallback(async () => {

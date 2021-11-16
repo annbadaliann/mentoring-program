@@ -8,6 +8,7 @@ import McTable from "../../../shared/components/Table";
 import EmptyListWrapper from "../../../shared/containers/EmptyListWrapper";
 import {
   getSuggestedMentors,
+  selectSelectedMentors,
   selectSuggestedMentors,
 } from "../../../store/slicers/mentors";
 import { IMentor } from "../../../store/models/interfaces/mentor";
@@ -15,6 +16,7 @@ import { IMentor } from "../../../store/models/interfaces/mentor";
 import columns from "../../Home/constants";
 import useStyles from "../style";
 import { selectUser } from "../../../store/slicers/auth";
+import { useLocation } from "react-router";
 
 interface IUser {
   first_name: string;
@@ -28,21 +30,29 @@ interface IUser {
 }
 
 const ThirdStep = (): JSX.Element => {
-  const suggesteMentors = useSelector(selectSuggestedMentors);
-  const form = useWatch()
+  const suggestedMentors = useSelector(selectSuggestedMentors);
+  const selectedMentors = useSelector(selectSelectedMentors);
+  const form = useWatch();
   const user = useSelector(selectUser);
   const [mentors, setMentors] = useState([]);
 
+  const location = useLocation();
+
   useEffect(() => {
-    const newRows = suggesteMentors.map((item: IMentor) => ({
-      ...item,
-      isSelected: true,
+    const newRows = suggestedMentors.map((mentor: IMentor) => ({
+      ...mentor,
+      isSelected: location?.state?.page ? selectedMentors.some(
+        (item: IMentor) => item.id === mentor.id
+      ): true,
     }));
+    
     setMentors(newRows);
-  }, [suggesteMentors]);
+  }, [location?.state?.page, suggestedMentors]);
 
   // const form = useWatch();
   const classes = useStyles();
+
+  console.log(selectedMentors, 'selected mentors')
 
   const dispatch = useDispatch();
 
@@ -70,10 +80,14 @@ const ThirdStep = (): JSX.Element => {
       <p>You can filter them, by clicking checkbox</p>
       <Paper className={classes.paper}>
         <EmptyListWrapper
-          isEmpty={!suggesteMentors.length}
+          isEmpty={!suggestedMentors.length}
           description="No any matches"
         >
-          <McTable rows={mentors} columns={columns} isSelectable />
+          <McTable
+            rows={mentors}
+            columns={columns}
+            isSelectable
+          />
         </EmptyListWrapper>
       </Paper>
     </div>
