@@ -67,10 +67,7 @@ function Register() {
 
   const onSubmit = useCallback(
     async (data: IUser) => {
-      const res: any = dispatch(
-        registerUser({ ...data})
-      );
-      debugger;
+      const res: any = await dispatch(registerUser(data));
       if (res) {
         history.push("/home");
       }

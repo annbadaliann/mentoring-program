@@ -13,7 +13,7 @@ export const registerUser = createAsyncThunk(`${name}/getMentors`, async (data: 
   return api({
     method: "POST",
     url: `${EBaseUrl.mainUrl}/users`,
-    body: JSON.stringify(data)
+    body: data
   });
 });
 
