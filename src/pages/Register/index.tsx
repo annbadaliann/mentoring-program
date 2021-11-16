@@ -24,6 +24,7 @@ import ThirdStep from "./components/ThirdStep";
 
 import { ILocation } from "./model";
 import constants from "./constants";
+import useStyles from "./style";
 
 function getStepContent(step: number) {
   switch (step) {
@@ -48,6 +49,8 @@ function Register() {
   const history = useHistory();
   const dispatch = useDispatch<AppDispatch>();
 
+  const classes = useStyles();
+
   const isLastStep = useMemo(
     () => activeStep === ESteps.ThirdStep,
     [activeStep]
@@ -69,8 +72,7 @@ function Register() {
   const onSubmit = useCallback(
     async (data: IUser) => {
       const form = user || data;
-      debugger;
-      const res: any = await dispatch(registerUser({...form, selectedMentors}));
+      await dispatch(registerUser({ ...form, selectedMentors }));
       history.push("/home");
     },
     [dispatch, history, selectedMentors]
@@ -108,20 +110,13 @@ function Register() {
   );
 
   return (
-    <Box
-      style={{
-        marginTop: 8,
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-      }}
-    >
+    <Box className={classes.mainWrapper}>
       <Steps activeStep={activeStep} />
       <Typography component="h1" variant="h5">
         Sign up
       </Typography>
       <FormProvider {...methods}>
-        <form style={{ width: "100%" }}>
+        <form className={classes.form}>
           <div>{getStepContent(activeStep)}</div>
 
           <Box display="flex" justifyContent="center" mt={5}>

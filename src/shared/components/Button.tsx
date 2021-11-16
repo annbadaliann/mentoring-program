@@ -18,8 +18,8 @@ interface IMcButton {
   children: ReactNode;
   width?: string;
   className?: any;
-  clickHandler: (e?: BaseSyntheticEvent) => void | Promise<void> | undefined;
-  variant: Variant | undefined;
+  clickHandler: (e?: any) => any;
+  variant?: Variant | undefined;
   disabled: boolean;
 }
 

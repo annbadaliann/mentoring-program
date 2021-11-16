@@ -16,6 +16,7 @@ import { IGender } from "../../../shared/models/Interfaces/genders";
 
 const FirstStep = () => {
   const genders: IGender[] = useSelector(selectGenders);
+  
   const { control } = useFormContext();
   const classes = useStyles();
   const dispatch = useDispatch()

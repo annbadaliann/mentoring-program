@@ -42,18 +42,12 @@ const McTable = <T, K extends keyof T>({
   const handleSelectRow = (id: number) => {
     const rows = [...selectableRows];
     const row = selectableRows.find((item) => item.id === id);
-    debugger;
-
     const newRows = rows.map((item) => {
       return {
         ...item,
         isSelected: item.id === row.id ? !item.isSelected : item.isSelected,
       };
     });
-
-    debugger;
-
-    // row.isSelected = !row.isSelected;
 
     setSelectableRows(newRows);
 

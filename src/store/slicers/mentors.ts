@@ -20,10 +20,10 @@ export const getMentors = createAsyncThunk(`${name}/getMentors`, async () => {
 
 export const getSuggestedMentors = createAsyncThunk(
   `${name}/getSuggestedMentors`,
-  async (queryList: IMentor) => {
+  async (query: string) => {
     return api({
       method: "GET",
-      url: `${EBaseUrl.mainUrl}/${name}?${queryList}`,
+      url: `${EBaseUrl.mainUrl}/${name}?${query}`,
     });
   }
 );
